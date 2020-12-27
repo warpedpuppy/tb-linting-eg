@@ -1,5 +1,7 @@
+// Array name
 let pokemonList = [];
 
+// Pokemon listed as objects
 let pokemon001 = {
     name: 'Balbasaur',
     height: 2.3,
@@ -54,6 +56,7 @@ let pokemon009 = {
     type: ['water'],
 };
 
+// To push each object into the array
 pokemonList.push(pokemon001);
 pokemonList.push(pokemon002);
 pokemonList.push(pokemon003);
@@ -63,3 +66,12 @@ pokemonList.push(pokemon006);
 pokemonList.push(pokemon007);
 pokemonList.push(pokemon008);
 pokemonList.push(pokemon009);
+
+// To list out the Name and Height of each Pokemon
+for (let i = 0; i < pokemonList.length; i++) {
+    document.write(`${pokemonList[i].name} `);
+    document.write(`(${pokemonList[i].height}) `);
+    if (pokemonList[i].height > 5) {
+        document.write("Wow that's tall! ");
+    };
+};
