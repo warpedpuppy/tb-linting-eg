@@ -44,8 +44,8 @@ let pokemonRepository = ( function () {
         });
     }
 
-    function showDetails() {
-        console.log(pokemonList.name);
+    function showDetails(pokemon) {
+        console.log(pokemon);
     }
 
     return {
