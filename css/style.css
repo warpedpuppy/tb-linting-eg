@@ -1,21 +1,102 @@
-h1 {
-    margin: 32px;
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    font-weight: 400;
+    font-size: 50px;
+    line-height: 1.6;
+    text-align: center;
+    text-transform: capitalize;
+}
+
+#modal-container {
+    display: none;
+}
+
+#modal-container.is-visible {
+    position: fixed;
+    padding: 20px;
+    box-sizing: border-box;
+    top: 25%;
+    left: 25%;
+    width: 50%;
+    height: 50%;
+    background-color: rgb(189, 189, 189);
+    z-index: 999;
+    overflow: auto;
+    display: grid;
+    text-align: center;
+    border-radius: 10px;
+    border: 3px solid black;
+}
+
+.modal {
+    float: right;
+    border: 0;
+    background: none;
+    color: black;
+    text-transform: capitalize;
+}
+
+.modal-close {
+    float: right;
+}
+
+.modal h1 {
+    margin: 20px;
+}
+
+.modal p {
+    margin: 10px;
+}
+
+.picture {
+    text-align: center;
+    width: 80%;
+}
+
+img {
+    width: 250px;
+}
+
+.box {
+    width: 500px;
+    padding: 10px;
+    border: 5px solid black;
+    margin: auto;
+    text-align: center;
 }
 
 .button-class {
-    background-color: #0071ce;
-    border: none;
-    color: white;
-    padding: 16px 32px;
-    text-align: center;
-    text-decoration: none;
+    border: 3px solid black;
+    font-size: 50px;
     display: inline-block;
-    font-size: 16px;
-    margin: 4px 2px;
-    -webkit-transition-duration: 0.4s; /* Safari */
-    transition-duration: 0.4s;
+    font-family: inherit;
+    background-color: rgb(168, 168, 168);
+    color: rgb(255, 255, 255);
+    text-decoration: none;
+    padding: 10px;
+    border-radius: 10px;
+    -webkit-transition: 2s opacity;
+    transition: 2s opacity;
+    margin: 15px;
+    text-transform: capitalize;
+}
+
+button:hover, button:focus, .button-class {
     cursor: pointer;
-    background-color: white;
-    color: black;
-    border: 2px solid #003d6e;
-  }
+    opacity: 0.6;
+}
+
+li {
+    list-style-type: none;
+}
+
+@media all and (max-width: 500px) {
+    body {
+        font-size: 30px;
+        text-align: center;
+    }
+
+    .button-class {
+        font-size: 30px;
+    }
+}
