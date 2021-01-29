@@ -11,10 +11,7 @@ let pokemonRepository = ( function () {
         let pokemonName = document.querySelector('.pokemon-list');
         let button = document.createElement('button');
         button.innerText = pokemon.name;
-        button.classList.add('btn');
-        button.classList.add('btn-primary');
-        button.classList.add('list-group-item');
-        button.classList.add('text-capitalize');
+        button.classList.add('btn', 'btn-primary', 'list-group-item', 'text-capitalize');
         button.setAttribute('type', 'button');
         button.setAttribute('data-target', '#pokemon-info');
         button.setAttribute('data-toggle', 'modal');
@@ -41,9 +38,7 @@ let pokemonRepository = ( function () {
 
         let pokemonImg = document.createElement('img');
         pokemonImg.setAttribute('src', pokemon.imageUrl);
-        pokemonImg.classList.add('img-fluid');
-        pokemonImg.classList.add('mb-2');
-        pokemonImg.classList.add('pokepic');
+        pokemonImg.classList.add('img-fluid', 'mb-2', 'pokepic');
 
         let pokemonHeight = document.createElement('p');
         pokemonHeight.innerText = 'Height: ' + pokemon.height / 10 + ' m'
@@ -58,67 +53,16 @@ let pokemonRepository = ( function () {
         modalBody.append(pokemonHeight);
         modalBody.append(pokemonWeight);
         
+        function convertNameToImagePath(str) {
+            let capitalize = str.charAt(0).toUpperCase() + str.substr(1);
+            return `/img/${capitalize}.svg`
+        }
+
+        // Shortened Switch
         pokemon.types.forEach(function(pokemon) {
             let pokemonType = document.createElement('img');
             pokemonType.classList.add('type');
-
-            // Switch statement for Pokemon types
-            switch (pokemon.type.name) {
-                case 'bug':
-                    pokemonType.setAttribute('src', '/img/Bug.svg');
-                    break;
-                case 'dark':
-                    pokemonType.setAttribute('src', '/img/Dark.svg');
-                    break;
-                case 'dragon':
-                    pokemonType.setAttribute('src', '/img/Dragon.svg');
-                    break;
-                case 'electric':
-                    pokemonType.setAttribute('src', '/img/Electric.svg');
-                    break;
-                case 'fairy':
-                    pokemonType.setAttribute('src', '/img/Fairy.svg');
-                    break;
-                case 'fight':
-                    pokemonType.setAttribute('src', '/img/Fight.svg');
-                    break;
-                case 'fire':
-                    pokemonType.setAttribute('src', '/img/Fire.svg');
-                    break;
-                case 'flying':
-                    pokemonType.setAttribute('src', '/img/Flying.svg');
-                    break;  
-                case 'ghost':
-                    pokemonType.setAttribute('src', '/img/Ghost.svg');
-                    break;        
-                case 'grass':
-                    pokemonType.setAttribute('src', '/img/Grass.svg');
-                    break;
-                case 'ground':
-                    pokemonType.setAttribute('src', '/img/Ground.svg');
-                    break;
-                case 'ice':
-                    pokemonType.setAttribute('src', '/img/Ice.svg');
-                    break;
-                case 'normal':
-                    pokemonType.setAttribute('src', '/img/Normal.svg');
-                    break;
-                case 'poison':
-                    pokemonType.setAttribute('src', '/img/Poison.svg');
-                    break;
-                case 'psychic':
-                    pokemonType.setAttribute('src', '/img/Psychic.svg');
-                    break;
-                case 'rock':
-                    pokemonType.setAttribute('src', '/img/Rock.svg');
-                    break;
-                case 'steel':
-                    pokemonType.setAttribute('src', '/img/Steel.svg');
-                    break;
-                case 'water':
-                    pokemonType.setAttribute('src', '/img/Water.svg');
-                    break;
-            }
+            pokemonType.setAttribute('src', convertNameToImagePath(pokemon.type.name));
 
             modalBody.append(pokemonType);
         });
@@ -130,7 +74,7 @@ let pokemonRepository = ( function () {
             showModal(pokemon);
         });
     }
-
+    
     // Gets the pokemon list
     function getAll() {
         return pokemonList;
@@ -181,29 +125,6 @@ let pokemonRepository = ( function () {
         });
     };
 
-    function hideModal() {
-        modalContainer.classList.remove('is-visible');
-    }
-    
-    // document.querySelector('#show-modal').addEventListener( 'click', () => {
-    //     showModal('Modal Title', 'Modal DEETs');
-    // });
-
-    window.addEventListener( 'keydown', (e) => {
-        if (e.key === 'Escape' && modalContainer.classList.contains('is-visible')) {
-            hideModal();
-        }
-    });
-
-    // modalContainer.addEventListener( 'click', (e) => {
-    //     let target = e.target;
-    //     if (target === modalContainer) {
-    //         hideModal();
-    //     }
-    // });
-
-    
-
     return {
         getAll: getAll,
         add: add,
@@ -212,7 +133,6 @@ let pokemonRepository = ( function () {
         loadList: loadList,
         loadDetails: loadDetails,
         showModal: showModal,
-        hideModal: hideModal
     };
 })();
 
@@ -222,3 +142,18 @@ pokemonRepository.loadList().then(function () {
         pokemonRepository.addListItem(pokemon);
     });
 });
+
+function searchPokemon() {
+    let searchText = document.querySelector('#pokemon-search').value;
+    let x = searchText.toLowerCase();
+    let poke = document.querySelectorAll('.list-group-item');
+    
+    for (let i = 0; i < poke.length; i++) {
+        let y = poke[i].innerText;
+        if (y.toLowerCase().indexOf(x) > -1) {
+            poke[i].style.display = '';
+        } else {
+            poke[i].style.display = 'none'
+        }
+    }
+}
