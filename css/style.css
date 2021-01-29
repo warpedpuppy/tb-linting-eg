@@ -1,4 +1,17 @@
-body {
+* {
+    box-sizing: border-box;
+}
+
+.navbar-custom {
+    background-color: #e3350d;
+    color: white;
+}
+
+.form-control {
+    border-radius: 40px;
+}
+
+/* body {
     font-family: Arial, Helvetica, sans-serif;
     font-weight: 400;
     font-size: 50px;
@@ -27,7 +40,7 @@ body {
 }
 
 .modal {
-    margin: auto;
+    margin-top: 60px;
     display: inline-block;
     box-sizing: border-box;
     width: 50%;
@@ -154,3 +167,28 @@ li {
         font-size: 30px;
     }
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+.nav-item {
+    font-size: 20px;
+}
+
+.container-fluid {
+    height: 50px;
+}
+
+#search-box {
+    height: 40px;
+} */
